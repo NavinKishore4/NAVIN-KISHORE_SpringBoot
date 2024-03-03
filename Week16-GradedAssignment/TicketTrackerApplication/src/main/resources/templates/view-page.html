@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>View Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f0f0f0;
+			text-align: center;
+		}
+
+		h3 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>Id</h3>
+	<p th:text="${ticket.id}"></p>
+	<h3>Ticket Title</h3>
+	<p th:text="${ticket.title}"></p>
+	<h3>Ticket Description</h3>
+	<p th:text="${ticket.shortDescription}"></p>
+	<h3>Ticket Content</h3>
+	<p th:utext="${ticket.content}"></p>
+	<h3>Ticket Create Date</h3>
+	<p th:text="${ticket.date}"></p>
+</body>
+
+</html>

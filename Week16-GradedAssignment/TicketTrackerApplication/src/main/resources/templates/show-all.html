@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Show All</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f0f0f0;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+		form {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		table {
+			width: 80%;
+			margin: 0 auto;
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 8px;
+			border: 1px solid #ddd;
+			text-align: left;
+		}
+
+		th {
+			background-color: #007bff;
+			color: white;
+		}
+
+		button {
+			background-color: #007bff;
+			color: white;
+			padding: 8px 20px;
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+		}
+
+		a {
+			color: #007bff;
+			text-decoration: none;
+			margin-right: 10px;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.action-button {
+			padding: 6px 12px;
+			margin-right: 5px;
+			border-radius: 3px;
+			background-color: #dae41b;
+			color: white;
+			border: none;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		.action-button.delete {
+			background-color: #dc3545;
+		}
+
+		.action-button.view {
+			background-color: #00d9ff;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="searchsum" method="post">
+		<h1>List Of Tickets</h1>
+		<input type="text" name="search">
+		<button type="submit">Search</button>
+	</form>
+
+	<table border="2">
+		<tr>
+			<th>Id</th>
+			<th>Ticket Title</th>
+			<th>Ticket Short Description</th>
+			<th>Ticket Created On</th>
+			<th>Actions</th>
+		</tr>
+
+		<tr th:each="temp: ${tickets}">
+			<td th:text="${temp.id}"></td>
+			<td th:text="${temp.title}"></td>
+			<td th:text="${temp.shortDescription}"></td>
+			<td th:text="${temp.date}"></td>
+			<td>
+				<button class="action-button edit"><a th:href="@{edit(id=${temp.id})}">Edit</a></button>
+				<button class="action-button delete"><a th:href="@{delete(id=${temp.id})}">Delete</a></button>
+				<button class="action-button view"><a th:href="@{view(id=${temp.id})}">View</a></button>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
